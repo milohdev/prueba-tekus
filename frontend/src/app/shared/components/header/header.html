@@ -1,7 +1,22 @@
 <mat-toolbar color="primary">
   <span>Mi Prueba Técnica</span>
+
+  @if (authService.isAuthenticated()) {
+    <a mat-button routerLink="/contents">
+      <mat-icon>list</mat-icon>
+      Contenidos
+    </a>
+  }
+
   <span class="spacer"></span>
-  <button mat-icon-button>
-    <mat-icon>account_circle</mat-icon>
-  </button>
+
+  @if (authService.isAuthenticated()) {
+    <button mat-icon-button (click)="onLogout()" title="Cerrar sesión">
+      <mat-icon>logout</mat-icon>
+    </button>
+  } @else {
+    <a mat-icon-button routerLink="/login" title="Iniciar sesión">
+      <mat-icon>account_circle</mat-icon>
+    </a>
+  }
 </mat-toolbar>

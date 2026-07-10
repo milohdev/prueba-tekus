@@ -1,0 +1,32 @@
+<div class="auth-container">
+  <h2>Iniciar sesión</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+      @if (form.get('email')?.hasError('required') && form.get('email')?.touched) {
+        <mat-error>El email es requerido</mat-error>
+      }
+      @if (form.get('email')?.hasError('email') && form.get('email')?.touched) {
+        <mat-error>Email inválido</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="password">
+      @if (form.get('password')?.hasError('required') && form.get('password')?.touched) {
+        <mat-error>La contraseña es requerida</mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="full-width">
+      Ingresar
+    </button>
+  </form>
+
+  <p class="switch-link">
+    ¿No tienes cuenta? <a routerLink="/register">Regístrate</a>
+  </p>
+</div>

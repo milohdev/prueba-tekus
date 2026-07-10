@@ -1,0 +1,35 @@
+<div class="form-container">
+  <h2>{{ isEditMode() ? 'Editar Contenido' : 'Nuevo Contenido' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title">
+      @if (form.get('title')?.hasError('required') && form.get('title')?.touched) {
+        <mat-error>El título es requerido</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description" rows="4"></textarea>
+      @if (form.get('description')?.hasError('required') && form.get('description')?.touched) {
+        <mat-error>La descripción es requerida</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tipo</mat-label>
+      <mat-select formControlName="type">
+        @for (type of contentTypes; track type) {
+          <mat-option [value]="type">{{ type }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-button type="button" (click)="onCancel()">Cancelar</button>
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </div>
+  </form>
+</div>
