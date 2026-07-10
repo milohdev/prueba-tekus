@@ -9,6 +9,9 @@ public sealed class ProviderRepository(MiloDbContext dbContext) : IProviderRepos
     public async Task<Provider?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         => await dbContext.Providers.FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
 
+    public async Task<Provider?> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
+        => await dbContext.Providers.FirstOrDefaultAsync(p => p.Email == email, cancellationToken);
+
     public async Task<(IReadOnlyList<Provider> Items, int TotalCount)> GetPagedAsync(
         string search,
         string sortBy,

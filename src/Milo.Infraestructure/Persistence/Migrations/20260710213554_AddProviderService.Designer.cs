@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Milo.Infraestructure.Persistence;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Milo.Infraestructure.Persistence.Migrations
 {
     [DbContext(typeof(MiloDbContext))]
-    partial class MiloDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260710213554_AddProviderService")]
+    partial class AddProviderService
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -163,6 +166,9 @@ namespace Milo.Infraestructure.Persistence.Migrations
                     b.Property<Guid>("ProviderId")
                         .HasColumnType("uuid");
 
+                    b.Property<Guid?>("ProviderId1")
+                        .HasColumnType("uuid");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
@@ -172,6 +178,8 @@ namespace Milo.Infraestructure.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ProviderId");
+
+                    b.HasIndex("ProviderId1");
 
                     b.ToTable("Services");
                 });
@@ -241,10 +249,14 @@ namespace Milo.Infraestructure.Persistence.Migrations
             modelBuilder.Entity("Milo.Domain.Entities.Service", b =>
                 {
                     b.HasOne("Milo.Domain.Entities.Provider", "Provider")
-                        .WithMany("Services")
+                        .WithMany()
                         .HasForeignKey("ProviderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Milo.Domain.Entities.Provider", null)
+                        .WithMany("Services")
+                        .HasForeignKey("ProviderId1");
 
                     b.Navigation("Provider");
                 });

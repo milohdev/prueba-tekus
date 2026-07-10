@@ -15,9 +15,9 @@ public sealed class ProviderConfiguration : IEntityTypeConfiguration<Provider>
         builder.Property(p => p.PageUrl).HasMaxLength(500).IsRequired();
         builder.Property(p => p.Email).HasMaxLength(200).IsRequired();
         
-        builder.HasMany<Service>()
-            .WithOne(p => p.Provider)
-            .HasForeignKey(p => p.ProviderId)
+        builder.HasMany(p => p.Services)
+            .WithOne(s => s.Provider)
+            .HasForeignKey(s => s.ProviderId)
             .OnDelete(DeleteBehavior.Cascade);
     }
     
