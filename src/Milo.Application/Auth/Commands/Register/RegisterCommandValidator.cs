@@ -27,6 +27,6 @@ public sealed class RegisterCommandValidator : AbstractValidator<RegisterCommand
         RuleFor(x => x.Role)
             .Must(r => Enum.TryParse<UserRole>(r, ignoreCase: true, out var parsed)
                        && parsed != UserRole.Admin)
-            .WithMessage("El rol debe ser 'Guest' u 'Owner'");
+            .WithMessage("El rol debe ser 'Provider'");
     }
 }

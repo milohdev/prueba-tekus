@@ -12,8 +12,5 @@ public sealed class CreateServiceCommandValidator : AbstractValidator<CreateServ
 
         RuleFor(x => x.CostPerHour)
             .GreaterThan(0);
-
-        RuleFor(x => x.ProviderId)
-            .NotEmpty();
-    }
+     }
 }

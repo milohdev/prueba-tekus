@@ -5,6 +5,7 @@ namespace Milo.Domain.Repositories;
 public interface IProviderRepository
 {
     Task<Provider?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<Provider?> GetByEmailAsync(string email, CancellationToken cancellationToken = default);
     Task<(IReadOnlyList<Provider> Items, int TotalCount)> GetPagedAsync(
         string search,
         string sortBy,

@@ -45,5 +45,9 @@ public sealed class Provider : BaseEntity, IAuditable, ISoftDeletable
         IsActive = true,
     };
 
-
+    public void Update(string name, string pageUrl)
+    {
+        Name = name;
+        PageUrl = pageUrl;
+    }
 }

@@ -1,0 +1,45 @@
+<div class="service-list-container">
+  <div class="header-row">
+    <h2>Mis Servicios</h2>
+    <button mat-raised-button color="primary" (click)="onCreate()">
+      <mat-icon>add</mat-icon>
+      Nuevo
+    </button>
+  </div>
+
+  <table mat-table [dataSource]="services()" class="mat-elevation-z2">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let service">{{ service.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="costPerHour">
+      <th mat-header-cell *matHeaderCellDef>Costo/Hora</th>
+      <td mat-cell *matCellDef="let service">{{ service.costPerHour | number: '1.2-2' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="isActive">
+      <th mat-header-cell *matHeaderCellDef>Activo</th>
+      <td mat-cell *matCellDef="let service">{{ service.isActive ? 'Sí' : 'No' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let service">
+        <button mat-icon-button (click)="onEdit(service)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="onDelete(service)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  @if (services().length === 0) {
+    <p class="empty-state">No hay servicios registrados.</p>
+  }
+</div>

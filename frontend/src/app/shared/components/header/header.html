@@ -1,10 +1,17 @@
 <mat-toolbar color="primary">
   <span>Mi Prueba Técnica</span>
 
-  @if (authService.isAuthenticated()) {
+  @if (authService.isAuthenticated() && !authService.isProvider()) {
     <a mat-button routerLink="/contents">
       <mat-icon>list</mat-icon>
       Contenidos
+    </a>
+  }
+
+  @if (authService.isAuthenticated() && authService.isProvider()) {
+    <a mat-button routerLink="/services">
+      <mat-icon>design_services</mat-icon>
+      Mis Servicios
     </a>
   }
 
@@ -17,6 +24,9 @@
   } @else {
     <a mat-icon-button routerLink="/login" title="Iniciar sesión">
       <mat-icon>account_circle</mat-icon>
+    </a>
+    <a mat-button routerLink="/provider/login">
+      Soy proveedor
     </a>
   }
 </mat-toolbar>

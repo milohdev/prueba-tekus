@@ -25,15 +25,6 @@
       }
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Rol</mat-label>
-      <mat-select formControlName="role">
-        @for (role of roles; track role) {
-          <mat-option [value]="role">{{ role }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-
     <button mat-raised-button color="primary" type="submit" class="full-width">
       Registrarse
     </button>
@@ -41,5 +32,8 @@
 
   <p class="switch-link">
     ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a>
+  </p>
+  <p class="switch-link">
+    ¿Eres proveedor? <a routerLink="/provider/register">Regístrate como proveedor</a>
   </p>
 </div>

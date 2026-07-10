@@ -3,7 +3,6 @@ import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../core/services/auth.service';
@@ -16,7 +15,6 @@ import { AuthService } from '../../../core/services/auth.service';
     RouterLink,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule,
     MatButtonModule
   ],
   templateUrl: './register.html',
@@ -28,14 +26,12 @@ export class RegisterComponent {
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
 
-  protected readonly roles = ['Guest', 'Owner'];
-
   protected form = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
-    role: ['Guest', Validators.required]
+    role: ['Provider', Validators.required]
   });
 
   onSubmit() {

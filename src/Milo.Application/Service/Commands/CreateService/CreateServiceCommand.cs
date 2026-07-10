@@ -6,5 +6,4 @@ namespace Milo.Application.Service.Commands.CreateService;
 
 public record CreateServiceCommand(
     string Name,
-    decimal CostPerHour,
-    Guid ProviderId) : IRequest<Result<ServiceDto>>;
+    decimal CostPerHour) : IRequest<Result<ServiceDto>>;

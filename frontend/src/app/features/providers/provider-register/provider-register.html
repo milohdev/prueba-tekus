@@ -1,0 +1,56 @@
+<div class="auth-container">
+  <h2>Registro de proveedor</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name">
+      @if (form.get('name')?.hasError('required') && form.get('name')?.touched) {
+        <mat-error>El nombre es requerido</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>NIT</mat-label>
+      <input matInput formControlName="nit">
+      @if (form.get('nit')?.hasError('required') && form.get('nit')?.touched) {
+        <mat-error>El NIT es requerido</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Página web</mat-label>
+      <input matInput formControlName="pageUrl" placeholder="https://...">
+      @if (form.get('pageUrl')?.hasError('required') && form.get('pageUrl')?.touched) {
+        <mat-error>La página web es requerida</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+      @if (form.get('email')?.hasError('required') && form.get('email')?.touched) {
+        <mat-error>El email es requerido</mat-error>
+      }
+      @if (form.get('email')?.hasError('email') && form.get('email')?.touched) {
+        <mat-error>Email inválido</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Contraseña</mat-label>
+      <input matInput type="password" formControlName="password">
+      @if (form.get('password')?.hasError('minlength')) {
+        <mat-error>Mínimo 8 caracteres</mat-error>
+      }
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="full-width">
+      Registrarme como proveedor
+    </button>
+  </form>
+
+  <p class="switch-link">
+    ¿Ya tienes cuenta de proveedor? <a routerLink="/provider/login">Inicia sesión</a>
+  </p>
+</div>
