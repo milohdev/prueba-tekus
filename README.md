@@ -1,8 +1,5 @@
 # 
 
-Plataforma de rentas cortas desarrollada en .NET 10 con Clean Architecture.
-Conecta huéspedes con propietarios, automatiza la validación de identidad
-por IA y provee herramientas de análisis financiero para propietarios.
 
 ## Requisitos previos
 - Docker y Docker Compose instalados
