@@ -9,6 +9,7 @@ namespace Milo.Infraestructure.Persistence;
 public sealed class MiloDbContext(DbContextOptions<MiloDbContext> options) : DbContext(options)
 {
     public DbSet<User> Users => Set<User>();
+    public DbSet<Content> Contents => Set<Content>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

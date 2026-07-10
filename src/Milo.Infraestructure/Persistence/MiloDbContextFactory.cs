@@ -10,7 +10,7 @@ public sealed class MiloDbContextFactory : IDesignTimeDbContextFactory<MiloDbCon
     public MiloDbContext CreateDbContext(string[] args)
     {
         var options = new DbContextOptionsBuilder<MiloDbContext>()
-            .UseNpgsql("Host=localhost;Database=milobnb;Username=postgres;Password=postgres")
+            .UseNpgsql("Host=localhost;Database=mipruebadb;Username=postgres;Password=postgres;GSS Encryption Mode=Disable")
             .AddInterceptors(new AuditInterceptor(new NullCurrentUserProvider()))
             .Options;
         return new MiloDbContext(options);

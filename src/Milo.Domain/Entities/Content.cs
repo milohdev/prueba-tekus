@@ -1,17 +1,16 @@
-using System.Net.Mime;
 using Milo.Domain.Common;
 using Milo.Domain.Common.Interfaces;
 using Milo.Domain.Entities.Enums;
 
 namespace Milo.Domain.Entities;
 
-public sealed class ContentType : BaseEntity, IAuditable, ISoftDeletable
+public sealed class Content : BaseEntity, IAuditable, ISoftDeletable
 {
-    private ContentType()
+    private Content()
     {}
     
-    public string Title { get; private set; }
-    public string Description { get; private set; }
+    public string Title { get; private set; } = default!;
+    public string Description { get; private set; } = default!;
     public ContentType Type { get; private set; }
     public bool IsActive { get; private set; }
     
@@ -36,7 +35,7 @@ public sealed class ContentType : BaseEntity, IAuditable, ISoftDeletable
         Type = type;
     }
 
-    public static ContentType Create(
+    public static Content Create(
         string title,
         string description,
         ContentType type) =>

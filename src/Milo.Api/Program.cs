@@ -55,7 +55,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.SwaggerDoc("v1", new OpenApiInfo { Title = "MiloBnb API", Version = "v1" });
+    options.SwaggerDoc("v1", new OpenApiInfo { Title = "TekusPrueba", Version = "v1" });
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Type = SecuritySchemeType.Http,
