@@ -22,6 +22,8 @@ public static class DependencyInjection
         services.AddScoped<IPasswordService, PasswordService>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IContentRepository, ContentRepository>();
+        services.AddScoped<IProviderRepository, ProviderRepository>();
+        services.AddScoped<IServiceRepository, ServiceRepository>();
         services.AddScoped<AuditInterceptor>();
         services.AddDbContext<MiloDbContext>((sp, options) =>
             options

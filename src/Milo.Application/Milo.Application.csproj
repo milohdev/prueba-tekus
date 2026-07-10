@@ -10,6 +10,13 @@
     <PackageReference Include="MediatR" Version="*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Provider\Commands\" />
+    <Folder Include="Provider\Queries\" />
+    <Folder Include="Service\Commands\" />
+    <Folder Include="Service\Queries\" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

@@ -10,6 +10,8 @@ public sealed class MiloDbContext(DbContextOptions<MiloDbContext> options) : DbC
 {
     public DbSet<User> Users => Set<User>();
     public DbSet<Content> Contents => Set<Content>();
+    public DbSet<Provider> Providers => Set<Provider>();
+    public DbSet<Service> Services => Set<Service>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

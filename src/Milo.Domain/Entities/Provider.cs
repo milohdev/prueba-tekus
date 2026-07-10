@@ -10,12 +10,14 @@ public sealed class Provider : BaseEntity, IAuditable, ISoftDeletable
     {}
     
     
-    public string Nit { get; private set; } 
-    public string Name { get; private set; }
-    public string PageUrl { get; private set; }
-    public string Email { get; private set; }
-    public string PasswordHash { get; private set; }
+    public string Nit { get; private set; } = default!;
+    public string Name { get; private set; } = default!;
+    public string PageUrl { get; private set; } = default!;
+    public string Email { get; private set; } = default!;
+    public string PasswordHash { get; private set; } = default!;
     public UserRole Role { get; private set; }
+    
+    public ICollection<Service> Services { get; } = new List<Service>();
     
     public bool IsActive { get; private set; }
     

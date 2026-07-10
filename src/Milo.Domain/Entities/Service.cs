@@ -8,12 +8,13 @@ public sealed class Service : BaseEntity, IAuditable, ISoftDeletable
     private Service()
     {}
     
-    public string Name { get; private set; }
+    public string Name { get; private set; } = default!;
     public decimal CostPerHour { get; private set; }
-    
+
     public Guid ProviderId { get; private set; }
-    
+
     public bool IsActive { get; private set; }
+    public Provider Provider { get; private set; } = default!;
     
     public DateTime CreatedAt { get; set; }
     public DateTime? UpdatedAt { get; set; }
@@ -37,15 +38,16 @@ public sealed class Service : BaseEntity, IAuditable, ISoftDeletable
    
     };
     
-    public static Service Update(
-        string name, decimal costPerHour, Guid providerId
-    ) => new()
+    public void Update(string name, decimal costPerHour)
     {
-        Name = name,
-        CostPerHour = costPerHour,
-        
-    };
-    
+        Name = name;
+        CostPerHour = costPerHour;
+    }
+
+    public void Activate() => IsActive = true;
+
+    public void Deactivate() => IsActive = false;
+
     public void SoftDelete()
     {
         IsDeleted = true;
